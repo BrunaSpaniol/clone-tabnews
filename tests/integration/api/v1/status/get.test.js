@@ -41,15 +41,19 @@ describe("testing status api", () => {
     );
   });
 
-  test("Postgres version should be a valid string", async () => {
+  test("Postgres version should be 16.0", async () => {
     const response = await fetch("http://localhost:3000/api/v1/status");
 
     const { database } = await response.json();
 
-    console.log(database.version);
+    expect(database.version).toEqual("16.0");
+  });
 
-    // expect(database.version).toBeDefined();
+  test("Opened connections should be Equal to 1", async () => {
+    const response = await fetch("http://localhost:3000/api/v1/status");
 
-    expect(database.version.length).toBeGreaterThan(0);
+    const { database } = await response.json();
+
+    expect(database.opened_connections).toEqual(1);
   });
 });
