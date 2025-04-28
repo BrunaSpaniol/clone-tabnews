@@ -13,8 +13,6 @@ describe("testing migrations", () => {
 
     const response1Body = await response1.json();
 
-    console.log(response1Body);
-
     expect(response1.status).toBe(201);
 
     expect(Array.isArray(response1Body)).toBe(true);
@@ -26,8 +24,6 @@ describe("testing migrations", () => {
     });
 
     const response2Body = await response2.json();
-
-    console.log(response2Body);
 
     expect(response2.status).toBe(200);
 
